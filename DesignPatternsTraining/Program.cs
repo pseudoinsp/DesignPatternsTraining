@@ -76,6 +76,7 @@ namespace DesignPatternsTraining
         }
     }
 
+    // ez object adapter
     public class Adapter : IKonnektor
     {
         public readonly IOlaszKonnektor OlaszKonnektor;
@@ -90,6 +91,18 @@ namespace DesignPatternsTraining
             OlaszKonnektor?.MukodikO();
         }
     }
+    
+    // ez class adapter, ritkabban használt
+    // ez csak GucciLampaval mukodik, mas IOlaszokkal nem
+    // mas GucciLampa leszarmazottakkal sem
+    // + ronda hogy Lampabol szarmazik egy adapter
+    //public class ClassAdapter : GucciLampa, IKonnektor
+    //{
+    //    public void Mukodik()
+    //    {
+    //        base.MukodikO();
+    //    }
+    //}
 
     class Program
     {
