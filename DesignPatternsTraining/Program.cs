@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,18 +92,40 @@ namespace DesignPatternsTraining
             OlaszKonnektor?.MukodikO();
         }
     }
-    
+
     // ez class adapter, ritkabban használt
     // ez csak GucciLampaval mukodik, mas IOlaszokkal nem
     // mas GucciLampa leszarmazottakkal sem
     // + ronda hogy Lampabol szarmazik egy adapter
-    //public class ClassAdapter : GucciLampa, IKonnektor
-    //{
-    //    public void Mukodik()
-    //    {
-    //        base.MukodikO();
-    //    }
-    //}
+    public class ClassAdapter : GucciLampa, IKonnektor
+    {
+        public void Mukodik()
+        {
+            base.MukodikO();
+        }
+    }
+
+    // Adapter
+    public class IdoKapcsolo : IKonnektor
+    {
+        private readonly IKonnektor eszkoz;
+
+        public IdoKapcsolo(IKonnektor eszkoz)
+        {
+            this.eszkoz = eszkoz;
+        }
+
+        public int Hour { get; set; }
+
+        public void Mukodik()
+        {
+            if (DateTime.Now.Hour < Hour)
+            {
+                eszkoz.Mukodik();
+            }
+        }
+    }
+    
 
     class Program
     {
@@ -115,8 +138,11 @@ namespace DesignPatternsTraining
 
             var eloszto = new Eloszto();
 
-            eloszto.Konnektors.AddRange(new IKonnektor[] { tv, lampa });
+            eloszto.Konnektors.Add(tv);
             eloszto.Konnektors.Add(new Adapter(gucciLampa));
+
+            var idoKapcsolo = new IdoKapcsolo(lampa) { Hour = 14 } ;
+            eloszto.Konnektors.Add(idoKapcsolo);
 
             // Elosztokat is tudok dugni elosztokba -> Composite pattern
             // Ezert a composite-nak ugyanazt az interfeszt kell tamogatni mint amiket tartalmaz
