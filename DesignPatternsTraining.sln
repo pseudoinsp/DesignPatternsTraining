@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDecorator", "StreamDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeExample", "BridgeExample\BridgeExample.csproj", "{AD3B3E25-D124-4A1C-A886-61E5D47B624A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyExample", "ProxyExample\ProxyExample.csproj", "{815A842C-C621-4ED8-AE19-D99C2CB61AD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815A842C-C621-4ED8-AE19-D99C2CB61AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815A842C-C621-4ED8-AE19-D99C2CB61AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815A842C-C621-4ED8-AE19-D99C2CB61AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815A842C-C621-4ED8-AE19-D99C2CB61AD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
