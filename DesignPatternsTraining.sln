@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelda", "DesignPatternsTrai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDecorator", "StreamDecorator\StreamDecorator.csproj", "{C36C6566-CC7E-4380-9B07-09A31530EF55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeExample", "BridgeExample\BridgeExample.csproj", "{AD3B3E25-D124-4A1C-A886-61E5D47B624A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C36C6566-CC7E-4380-9B07-09A31530EF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36C6566-CC7E-4380-9B07-09A31530EF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36C6566-CC7E-4380-9B07-09A31530EF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3B3E25-D124-4A1C-A886-61E5D47B624A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
