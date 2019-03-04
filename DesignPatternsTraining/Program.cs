@@ -48,6 +48,19 @@ namespace DesignPatternsTraining
         }
     }
 
+    public interface IOlaszKonnektor
+    {
+        void MukodikO();
+    }
+
+    public class GucciLampa : IOlaszKonnektor
+    {
+        public void MukodikO()
+        {
+            Console.WriteLine("Design világít");
+        }
+    }
+
     public class Eloszto : IKonnektor
     {
         private readonly List<IKonnektor> _konnektors = new List<IKonnektor>();
@@ -63,6 +76,21 @@ namespace DesignPatternsTraining
         }
     }
 
+    public class Adapter : IKonnektor
+    {
+        public readonly IOlaszKonnektor OlaszKonnektor;
+
+        public Adapter(IOlaszKonnektor konnektor)
+        {
+            OlaszKonnektor = konnektor;
+        }
+
+        public void Mukodik()
+        {
+            OlaszKonnektor?.MukodikO();
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -70,9 +98,12 @@ namespace DesignPatternsTraining
             var hotelSzoba = new HotelSzoba();
             var tv = new Televizio();
             var lampa = new EjjeliLampa();
+            var gucciLampa = new GucciLampa();
+
             var eloszto = new Eloszto();
 
             eloszto.Konnektors.AddRange(new IKonnektor[] { tv, lampa });
+            eloszto.Konnektors.Add(new Adapter(gucciLampa));
 
             // Elosztokat is tudok dugni elosztokba -> Composite pattern
             // Ezert a composite-nak ugyanazt az interfeszt kell tamogatni mint amiket tartalmaz
