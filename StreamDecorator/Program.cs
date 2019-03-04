@@ -1,7 +1,9 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -92,7 +94,72 @@ namespace StreamDecorator
     //    }
     //}
 
+    public interface IExecutor
+    {
+        void Execute();
+    }
 
+    // Kérdés: milyen gyorsan fut le az Execute?
+    public class MyClass
+    {
+        private readonly IExecutor executor;
+
+        public MyClass(IExecutor executor)
+        {
+            this.executor = executor;
+        }
+
+        public void DoSomething()
+        {
+            // nem idealis, mert sok helyen kene beirni (pl. ha sok muvelet van a myClassban)
+            // ha epp nem kell, ki kell venni a mert osztály kodjabol
+            // mero kod miert van business logicban?
+            //var sw = Stopwatch.StartNew();
+            executor.Execute();
+            //Console.WriteLine(sw.ElapsedMilliseconds);
+        }
+    }
+
+    public class PerfDecorator : IExecutor
+    {
+        private readonly IExecutor executor;
+
+        public PerfDecorator(IExecutor executor)
+        {
+            this.executor = executor;
+        }
+
+        public void Execute()
+        {
+            var sw = Stopwatch.StartNew();
+            executor.Execute();
+            Console.WriteLine(sw.ElapsedMilliseconds);
+        }
+    }
+
+    public class RetryDecorator : IExecutor
+    {
+        private readonly IExecutor executor;
+
+        public RetryDecorator(IExecutor executor)
+        {
+            this.executor = executor;
+        }
+
+        public void Execute()
+        {
+            try
+            {
+                executor.Execute();
+            }
+            catch (Exception)
+            {
+                // log, count
+                executor.Execute();
+            }
+        }
+    }
+    
     class Program
     {
         static void Main(string[] args)
