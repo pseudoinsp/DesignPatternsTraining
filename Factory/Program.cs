@@ -93,6 +93,42 @@ namespace Factory
         protected override IDataAccessComponent CreateDataAccessComponent() => new TestDataAccessComponent() { TestValue = TestValue };
     }
 
+
+    // Abstract factory user
+    public class AbstractFactoryBusinessLogicComponent
+    {
+        private readonly IDataAccessComponentFactory dataAccessComponentFactory;
+
+        public AbstractFactoryBusinessLogicComponent(IDataAccessComponentFactory dataAccessComponentFactory)
+        {
+            this.dataAccessComponentFactory = dataAccessComponentFactory;
+        }
+
+        public double GetHappyUserPercentage()
+        {
+            var happyUsers = 20.0;
+            var dataAccessComponent = dataAccessComponentFactory.CreateDataAccessComponent();
+            var allUsers = dataAccessComponent.GetData();
+
+            return happyUsers / allUsers;
+        }
+    }
+
+    // abstract factory
+    public interface IDataAccessComponentFactory
+    {
+        IDataAccessComponent CreateDataAccessComponent();
+    }
+
+    // AF impl.
+    public class DataAccessComponentFactory : IDataAccessComponentFactory
+    {
+        public IDataAccessComponent CreateDataAccessComponent()
+        {
+            return new DataAccessComponent();
+        }
+    }
+
     class Program
     {
         static void Test()
