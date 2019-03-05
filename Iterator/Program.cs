@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Iterator
 {
+    // == IEnumerable in .NET
     public interface IAggregate
     {
         IIterator CreateIterator();
     }
 
+    // == IEnumerator in .NET
     public interface IIterator
     {
         int GetCurrent();
