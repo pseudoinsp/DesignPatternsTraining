@@ -105,7 +105,7 @@ namespace DesignPatternsTraining
         }
     }
 
-    // Adapter
+    // Decorator
     public class IdoKapcsolo : IKonnektor
     {
         private readonly IKonnektor eszkoz;
