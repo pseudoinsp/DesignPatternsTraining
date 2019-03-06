@@ -79,7 +79,7 @@ namespace Builder
         public abstract string GetConnectionString();
     }
 
-    public class SqlConnectionStringBuilder : SqlConnectionStringBuilderBase
+    public class MsSqlConnectionStringBuilder : SqlConnectionStringBuilderBase
     {
         public override string GetConnectionString()
         {
@@ -115,7 +115,7 @@ namespace Builder
     {
         static void Main(string[] args)
         {
-            var builder = new SqlConnectionStringBuilder();
+            SqlConnectionStringBuilderBase builder = new MsSqlConnectionStringBuilder();
 
             // ez nehezkes, nem ad annyira domain helpet
             //builder.UserId = "asd";
