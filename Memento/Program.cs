@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Memento
 {
-    // Caretaker: stores list of Mementos, not implemented here
+    // Caretaker: stores list of Mementos, implemented in main (or in a later solution, in the saveable object itself)
 
     public interface IMemento
     {
